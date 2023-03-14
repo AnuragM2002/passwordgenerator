@@ -36,17 +36,23 @@ function generatePassword() {
   } else {
     return 'Invalid parameters. Please try tgain.';
   }
-  
+
   if (usedCharacters.length === 0) {
     return 'Invalid parameters. Please select "Yes" for at least one character type.' 
   }
-  
+
   var passwordCharacters = usedCharacters.join('');
   for (var i = 0; i < characters[0]; i++) {
     password += passwordCharacters.charAt(Math.floor(Math.random() * passwordCharacters.length))
   }
-
-  console.log(password);
+  
+  var tempArr = password.split('');
+  for (var i = 0; i < usedCharacters.length; i++) {
+    var str = usedCharacters[i];
+    tempArr[i] = str.charAt(Math.floor(Math.random() * str.length));
+  }
+  var finalPassword = tempArr.join('');
+  return finalPassword;
 }
 
 // Get references to the #generate element
